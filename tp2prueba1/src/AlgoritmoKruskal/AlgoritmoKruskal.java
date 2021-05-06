@@ -1,6 +1,8 @@
 package AlgoritmoKruskal;
 
 import Grafo.Vertice;
+
+
 import Grafo.GrafoMatrizPesos;
 
 public class AlgoritmoKruskal {
@@ -15,40 +17,38 @@ public class AlgoritmoKruskal {
 	public AlgoritmoKruskal(GrafoMatrizPesos gp, Vertice[] verts) {
 		this.num_vertices = gp.numeroDeVertices();
 		this.matriz = gp.getMatPeso();
-		this.vertices=verts;
+		this.vertices = verts;
 		this.verticesHeredadas = gp.vertices();
 		parent = new int[this.num_vertices + 1];
 	}
 
 	protected GrafoMatrizPesos transoformarEnArbol() {
 		int i = 0, j = 0, ne = 1, minimo = 0, a = 0, u = 0, b = 0, v = 0, minimo_costo = 0;
-	GrafoMatrizPesos arbol = new GrafoMatrizPesos(num_vertices);
+		GrafoMatrizPesos arbol = new GrafoMatrizPesos(num_vertices);
 		for (Vertice v1 : verticesHeredadas) {
 			arbol.nuevoVertice(v1.nomVertice());
 		}
-			while (ne < num_vertices) {
-				for (i = 1, minimo = valorMax; i <= num_vertices; i++) {
-					for (j = 1; j <= num_vertices; j++) {
-						if (matriz[i - 1][j - 1] < minimo) {
-							minimo = matriz[i - 1][j - 1];
-							a = u = i;
-							b = v = j;
-						}
+		while (ne < num_vertices) {
+			for (i = 1, minimo = valorMax; i <= num_vertices; i++) {
+				for (j = 1; j <= num_vertices; j++) {
+					if (matriz[i - 1][j - 1] < minimo) {
+						minimo = matriz[i - 1][j - 1];
+						a = u = i;
+						b = v = j;
 					}
 				}
-				u = find(u);
-				v = find(v);
-				if (union(u, v) > 0) {
-					ne++;
-					arbol.nuevoArco(this.vertices[a-1].nomVertice(), this.vertices[b-1].nomVertice(), minimo);
-					
-					
-					minimo_costo = minimo_costo + minimo;
-				}
-				matriz[a - 1][b - 1] = matriz[b - 1][a - 1] = valorMax;
 			}
-		
-	
+			u = find(u);
+			v = find(v);
+			if (union(u, v) > 0) {
+				ne++;
+				arbol.nuevoArco(this.vertices[a - 1].nomVertice(), this.vertices[b - 1].nomVertice(), minimo);
+
+				minimo_costo = minimo_costo + minimo;
+			}
+			matriz[a - 1][b - 1] = matriz[b - 1][a - 1] = valorMax;
+		}
+
 		return arbol;
 	}
 

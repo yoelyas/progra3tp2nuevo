@@ -1,7 +1,7 @@
 package AlgoritmoKruskal;
 
 import Grafo.GrafoMatrizPesos;
-import Grafo.Vertice;
+
 
 public class Main_Kruskal {
 	public static void main(String[] args) {
@@ -10,6 +10,7 @@ public class Main_Kruskal {
 		int n = 6;
 
 		GrafoMatrizPesos grafo = new GrafoMatrizPesos(n);
+		
 		// Creamos los vertices
 		grafo.nuevoVertice("Argentina");
 		grafo.nuevoVertice("Uruguay");
@@ -18,7 +19,7 @@ public class Main_Kruskal {
 		grafo.nuevoVertice("Brasil");
 		grafo.nuevoVertice("Bolivia");
 		
-		// Unimos los vertices
+		// Unimos los vertices / crear aristas 
 		grafo.nuevoArco("Argentina", "Uruguay", 1);
 		grafo.nuevoArco("Argentina", "Brasil", 2);
 		grafo.nuevoArco("Argentina", "Paraguay", 5);
@@ -29,6 +30,7 @@ public class Main_Kruskal {
 		grafo.nuevoArco("Brasil", "Paraguay", 2);
 		grafo.nuevoArco("Bolivia", "Paraguay", 5);
 		grafo.nuevoArco("Bolivia", "Chile", 7);
+		System.out.println("peso entre arg y chile " + grafo.pesoArco("Argentina", "Chile"));
 
 		grafo.mostrarMatriz(); //grafo original
 

@@ -73,7 +73,7 @@ public class GrafoMatrizPesos {
 	public int[][] getMatPeso() {
 		return matPesos;
 	}
-
+	// borrar mas adelante
 	public void mostrarMatriz() {
 		for (int i = 0; i < matPesos.length; i++) {
 			for (int j = 0; j < matPesos.length; j++) {
@@ -91,7 +91,7 @@ public class GrafoMatrizPesos {
 		int mayorPeso = 0;
 		for (int i = 0; i < matPesos.length; i++) {
 			for (int j = 0; j < matPesos.length; j++) {
-				if (matPesos[i][j] > mayorPeso && matPesos[i][j] != 0xFFFF) {
+				if (matPesos[i][j] > mayorPeso && matPesos[i][j] != valorMax) {
 					mayorPeso = matPesos[i][j];
 				}
 			}
