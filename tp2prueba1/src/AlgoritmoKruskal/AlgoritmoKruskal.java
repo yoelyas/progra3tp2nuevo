@@ -4,7 +4,7 @@ import Grafo.Vertice;
 import Grafo.GrafoMatrizPesos;
 
 public class AlgoritmoKruskal {
-	static int INFINITO = 0xFFFF;
+	static int valorMax = 0xFFFF;
 	private int[][] matriz;
 	private int num_vertices;
 	private int parent[];
@@ -27,7 +27,7 @@ public class AlgoritmoKruskal {
 			arbol.nuevoVertice(v1.nomVertice());
 		}
 			while (ne < num_vertices) {
-				for (i = 1, minimo = INFINITO; i <= num_vertices; i++) {
+				for (i = 1, minimo = valorMax; i <= num_vertices; i++) {
 					for (j = 1; j <= num_vertices; j++) {
 						if (matriz[i - 1][j - 1] < minimo) {
 							minimo = matriz[i - 1][j - 1];
@@ -45,7 +45,7 @@ public class AlgoritmoKruskal {
 					
 					minimo_costo = minimo_costo + minimo;
 				}
-				matriz[a - 1][b - 1] = matriz[b - 1][a - 1] = INFINITO;
+				matriz[a - 1][b - 1] = matriz[b - 1][a - 1] = valorMax;
 			}
 		
 	

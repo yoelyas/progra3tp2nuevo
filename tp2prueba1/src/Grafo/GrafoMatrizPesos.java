@@ -1,7 +1,7 @@
 package Grafo;
 
 public class GrafoMatrizPesos {
-	public static int INFINITO = 0xFFFF;
+	public static int valorMax = 0xFFFF;
 	private int[][] matPesos;
 	private Vertice[] vertices;
 	private int numVerts;
@@ -11,7 +11,7 @@ public class GrafoMatrizPesos {
 		vertices = new Vertice[tamaño];
 		for (int i = 0; i < tamaño; i++)
 			for (int j = 0; j < tamaño; j++)
-				matPesos[i][j] = INFINITO;
+				matPesos[i][j] = valorMax;
 		numVerts = 0;
 	}
 
@@ -57,7 +57,7 @@ public class GrafoMatrizPesos {
 		matPesos[numB][numA] = peso;
 	}
 
-	// valida que exista el vertices con el nombre que recibe en el parametro
+	// valida que exista el vertices con el nombre que recibe en el parametro y lo retorna
 	public int numVertice(String vs) {
 		Vertice v = new Vertice(vs);
 		boolean encontrado = false;
@@ -77,7 +77,7 @@ public class GrafoMatrizPesos {
 	public void mostrarMatriz() {
 		for (int i = 0; i < matPesos.length; i++) {
 			for (int j = 0; j < matPesos.length; j++) {
-				if (matPesos[i][j] == 0xFFFF)
+				if (matPesos[i][j] == valorMax)
 					System.out.print(0 + " ");
 				else
 					System.out.print(matPesos[i][j] + " ");
@@ -99,8 +99,8 @@ public class GrafoMatrizPesos {
 		for (int i = 0; i < matPesos.length; i++) {
 			for (int j = 0; j < matPesos.length; j++) {
 				if (matPesos[i][j] == mayorPeso) {
-					matPesos[i][j] = 0xFFFF;
-					matPesos[j][i] = 0xFFFF;
+					matPesos[i][j] = valorMax;
+					matPesos[j][i] = valorMax;
 					return;
 				}
 
