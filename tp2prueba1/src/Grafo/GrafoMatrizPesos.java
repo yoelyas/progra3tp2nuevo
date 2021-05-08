@@ -1,17 +1,24 @@
 package Grafo;
 
+import java.util.ArrayList;
+
 public class GrafoMatrizPesos {
 	public static int valorMax = 0xFFFF;
 	private int[][] matPesos;
+	private boolean[][] matAdyacencia;
 	private Vertice[] vertices;
 	private int numVerts;
 
 	public GrafoMatrizPesos(int tamaño) {
 		matPesos = new int[tamaño][tamaño];
+		matAdyacencia = new boolean[tamaño][tamaño];
 		vertices = new Vertice[tamaño];
-		for (int i = 0; i < tamaño; i++)
-			for (int j = 0; j < tamaño; j++)
+		for (int i = 0; i < tamaño; i++) {
+			for (int j = 0; j < tamaño; j++) {
 				matPesos[i][j] = valorMax;
+				matAdyacencia[i][j] = false;
+			}
+		}
 		numVerts = 0;
 	}
 
@@ -37,6 +44,14 @@ public class GrafoMatrizPesos {
 		return matPesos[numA][numB];
 	}
 
+	public boolean existeArco(String a, String b) {
+		int numA;
+		int numB;
+		numA = numVertice(a);
+		numB = numVertice(b);
+		return matAdyacencia[numA][numB];
+	}
+
 	// retorna el numero de vertices
 	public int numeroDeVertices() {
 		return numVerts;
@@ -55,9 +70,12 @@ public class GrafoMatrizPesos {
 		numB = numVertice(b);
 		matPesos[numA][numB] = peso;
 		matPesos[numB][numA] = peso;
+		matAdyacencia[numA][numB] = true;
+		matAdyacencia[numB][numA] = true;
 	}
 
-	// valida que exista el vertices con el nombre que recibe en el parametro y lo retorna
+	// valida que exista el vertices con el nombre que recibe en el parametro y lo
+	// retorna
 	public int numVertice(String vs) {
 		Vertice v = new Vertice(vs);
 		boolean encontrado = false;
@@ -73,6 +91,7 @@ public class GrafoMatrizPesos {
 	public int[][] getMatPeso() {
 		return matPesos;
 	}
+
 	// borrar mas adelante
 	public void mostrarMatriz() {
 		for (int i = 0; i < matPesos.length; i++) {
@@ -101,6 +120,8 @@ public class GrafoMatrizPesos {
 				if (matPesos[i][j] == mayorPeso) {
 					matPesos[i][j] = valorMax;
 					matPesos[j][i] = valorMax;
+					matAdyacencia[i][j] = false;
+					matAdyacencia[j][i] = false;
 					return;
 				}
 
@@ -108,9 +129,42 @@ public class GrafoMatrizPesos {
 		}
 
 	}
+
 	public void separarEnRegiones(int n) {
-		for(int i = 0; i < n-1; i++)
+		for (int i = 0; i < n - 1; i++)
 			quitarElementoMasGrande();
-		
+
+	}
+
+	private void DFS(int vertice, boolean[] visitados, ArrayList<Integer> region) {
+		if (!visitados[vertice]) {
+			region.add(vertice);
+			visitados[vertice] = true;
+
+			for (int i = 0; i < this.matAdyacencia[1].length; i++) {
+				if (this.matAdyacencia[vertice][i]) {
+					DFS(i, visitados, region);
+				}
+			}
+		}
+	}
+
+	public int componentesConexas() {
+
+		boolean[] visitados = new boolean[this.matAdyacencia.length];
+		int cantComponentes = 0;
+
+		for (int i = 0; i < this.matAdyacencia.length; i++) {
+			ArrayList<Integer> region = new ArrayList<>();
+			if (!visitados[i]) {
+				DFS(i, visitados, region);
+				ArrayList<String> regionNombre = new ArrayList<>();
+				for(Integer indiceProvincia: region)
+					regionNombre.add(vertices[indiceProvincia].nombre);
+				System.out.println(regionNombre);
+				cantComponentes++;
+			}
+		}
+		return cantComponentes;
 	}
 }

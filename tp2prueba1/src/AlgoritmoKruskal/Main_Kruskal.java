@@ -31,6 +31,8 @@ public class Main_Kruskal {
 		grafo.nuevoArco("Bolivia", "Paraguay", 5);
 		grafo.nuevoArco("Bolivia", "Chile", 7);
 		System.out.println("peso entre arg y chile " + grafo.pesoArco("Argentina", "Chile"));
+		System.out.println(grafo.componentesConexas());
+
 
 		grafo.mostrarMatriz(); //grafo original
 
@@ -42,5 +44,6 @@ public class Main_Kruskal {
 		arbol.separarEnRegiones(3); //cantidad de regiones en las que quiero separar el grafo
 		
 		arbol.mostrarMatriz(); //grafo separado en regiones
+		System.out.println(arbol.componentesConexas()); //el metodo imprime las regiones pero retorna la catidad de regiones
 	}
 }
