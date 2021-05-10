@@ -1,8 +1,8 @@
 package Grafo;
 
 public class Vertice {
-	String nombre;
-	int numVertice;
+	private String nombre;
+	private int numVertice;
 
 	public Vertice(String s) {
 		nombre = s;
@@ -22,5 +22,9 @@ public class Vertice {
 	// Asigna al numero de vertice el valor que recibe en el parameteo
 	public void asigVert(int n) {
 		numVertice = n;
+	}
+	
+	public int getNum() {
+		return numVertice;
 	}
 }

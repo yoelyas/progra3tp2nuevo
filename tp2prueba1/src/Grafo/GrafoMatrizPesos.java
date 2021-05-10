@@ -34,6 +34,17 @@ public class GrafoMatrizPesos {
 			vertices[numVerts++] = v; // Lo coloca en la posicion que le corresponde en el arreglo de vertices
 		}
 	}
+	// crea un nuevo arco entre 2 vertices con un peso recibido por parametro
+		public void nuevoArco(String a, String b, int peso) {
+			int numA;
+			int numB;
+			numA = numVertice(a);
+			numB = numVertice(b);
+			matPesos[numA][numB] = peso;
+			matPesos[numB][numA] = peso;
+			matAdyacencia[numA][numB] = true;
+			matAdyacencia[numB][numA] = true;
+		}
 
 	// Retorna el valor del peso entre las aristas
 	public int pesoArco(String a, String b) {
@@ -62,17 +73,7 @@ public class GrafoMatrizPesos {
 		return vertices;
 	}
 
-	// crea un nuevo arco entre 2 vertices con un peso recibido por parametro
-	public void nuevoArco(String a, String b, int peso) {
-		int numA;
-		int numB;
-		numA = numVertice(a);
-		numB = numVertice(b);
-		matPesos[numA][numB] = peso;
-		matPesos[numB][numA] = peso;
-		matAdyacencia[numA][numB] = true;
-		matAdyacencia[numB][numA] = true;
-	}
+	
 
 	// valida que exista el vertices con el nombre que recibe en el parametro y lo
 	// retorna
