@@ -107,7 +107,7 @@ public class GrafoMatrizPesos {
 		System.out.println("");
 	}
 
-	public void quitarElementoMasGrande() {
+	public void quitarAristaMasGrande() {
 		int mayorPeso = 0;
 		for (int i = 0; i < matPesos.length; i++) {
 			for (int j = 0; j < matPesos.length; j++) {
@@ -133,7 +133,7 @@ public class GrafoMatrizPesos {
 
 	public void separarEnRegiones(int n) {
 		for (int i = 0; i < n - 1; i++)
-			quitarElementoMasGrande();
+			quitarAristaMasGrande();
 
 	}
 

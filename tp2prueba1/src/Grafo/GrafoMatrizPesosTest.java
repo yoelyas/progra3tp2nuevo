@@ -42,18 +42,36 @@ public class GrafoMatrizPesosTest {
 	}
 
 	@Test
-	public void testQuitarElementoMasGrande() {
-		fail("Not yet implemented");
+	public void testQuitarAristaMasGrande() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(3);
+		grafo.nuevoVertice("Argentina");
+		grafo.nuevoVertice("Chile");
+		grafo.nuevoVertice("Uruguay");
+		grafo.nuevoArco("Argentina", "Chile", 4);
+		grafo.nuevoArco("Argentina", "Uruguay", 2);
+		grafo.nuevoArco("Chile", "Uruguay", 2);
+		grafo.quitarAristaMasGrande();
+		
+		GrafoMatrizPesos grafo2 = new GrafoMatrizPesos(3);
+		grafo2.nuevoVertice("Argentina");
+		grafo2.nuevoVertice("Chile");
+		grafo2.nuevoVertice("Uruguay");
+		grafo2.nuevoArco("Argentina", "Uruguay", 2);
+		grafo2.nuevoArco("Chile", "Uruguay", 2);
+		assertEquals(grafo2.getMatPeso(),grafo.getMatPeso());
 	}
 
 	@Test
 	public void testSepararEnRegiones() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testComponentesConexas() {
-		fail("Not yet implemented");
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(3);
+		grafo.nuevoVertice("Argentina");
+		grafo.nuevoVertice("Chile");
+		grafo.nuevoVertice("Uruguay");
+		grafo.nuevoArco("Argentina", "Chile", 4);
+		grafo.separarEnRegiones(0);
+		assertTrue(grafo.existeArco("Argentina", "Chile"));
+		
+		
 	}
 
 }
