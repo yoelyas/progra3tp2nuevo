@@ -34,17 +34,18 @@ public class GrafoMatrizPesos {
 			vertices[numVerts++] = v; // Lo coloca en la posicion que le corresponde en el arreglo de vertices
 		}
 	}
+
 	// crea un nuevo arco entre 2 vertices con un peso recibido por parametro
-		public void nuevoArco(String a, String b, int peso) {
-			int numA;
-			int numB;
-			numA = numVertice(a);
-			numB = numVertice(b);
-			matPesos[numA][numB] = peso;
-			matPesos[numB][numA] = peso;
-			matAdyacencia[numA][numB] = true;
-			matAdyacencia[numB][numA] = true;
-		}
+	public void nuevoArco(String a, String b, int peso) {
+		int numA;
+		int numB;
+		numA = numVertice(a);
+		numB = numVertice(b);
+		matPesos[numA][numB] = peso;
+		matPesos[numB][numA] = peso;
+		matAdyacencia[numA][numB] = true;
+		matAdyacencia[numB][numA] = true;
+	}
 
 	// Retorna el valor del peso entre las aristas
 	public int pesoArco(String a, String b) {
@@ -72,8 +73,6 @@ public class GrafoMatrizPesos {
 	public Vertice[] vertices() {
 		return vertices;
 	}
-
-	
 
 	// valida que exista el vertices con el nombre que recibe en el parametro y lo
 	// retorna
@@ -151,21 +150,17 @@ public class GrafoMatrizPesos {
 	}
 
 	public ArrayList<ArrayList<String>> componentesConexas() {
-
 		boolean[] visitados = new boolean[this.matAdyacencia.length];
-		
 		ArrayList<ArrayList<String>> ret = new ArrayList<>();
-
-
 		for (int i = 0; i < this.matAdyacencia.length; i++) {
 			ArrayList<Integer> region = new ArrayList<>();
 			if (!visitados[i]) {
 				DFS(i, visitados, region);
-				ArrayList<String> regionNombre = new ArrayList<>();
-				for(Integer indiceProvincia: region)
-					regionNombre.add(vertices[indiceProvincia].getNombre());
-				ret.add(regionNombre);
-			
+				ArrayList<String> regionPorNombre = new ArrayList<>();
+				for (Integer indiceProvincia : region)
+					regionPorNombre.add(vertices[indiceProvincia].getNombre());
+				ret.add(regionPorNombre);
+
 			}
 		}
 		return ret;
