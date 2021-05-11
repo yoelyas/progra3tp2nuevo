@@ -2,6 +2,8 @@ package Grafo;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 
@@ -72,6 +74,31 @@ public class GrafoMatrizPesosTest {
 		grafo.nuevoArco("Argentina", "Chile", 4);
 		grafo.separarEnRegiones(0);
 		assertTrue(grafo.existeArco("Argentina", "Chile"));
+		
+		
+	}
+	@Test
+	public void testComponentesConexas() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(4);
+		grafo.nuevoVertice("Argentina");
+		grafo.nuevoVertice("Chile");
+		grafo.nuevoVertice("Uruguay");
+		grafo.nuevoVertice("Perú");
+		grafo.nuevoArco("Argentina", "Chile", 4);
+		grafo.nuevoArco("Argentina", "Uruguay", 2);
+		grafo.nuevoArco("Chile", "Uruguay", 2);
+		ArrayList<ArrayList<String>> ret = new ArrayList<>();
+		ArrayList<String> reguion1 = new ArrayList<>();
+		ArrayList<String> reguion2 = new ArrayList<>();
+		reguion1.add("Argentina");
+		reguion1.add("Chile");
+		reguion1.add("Uruguay");
+		
+		reguion2.add("Perú");
+		ret.add(reguion1);
+		ret.add(reguion2);
+
+		assertEquals(ret, grafo.componentesConexas());
 		
 		
 	}
