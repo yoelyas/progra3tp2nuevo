@@ -11,12 +11,12 @@ public class Vertice {
 
 	// Retorna el nombre del vertice
 	public String nomVertice() {
-		return nombre;
+		return getNombre();
 	}
 
 	// Compara el vertice actual con el recibido por parametro
 	public boolean equals(Vertice v) {
-		return nombre.equals(v.nombre);
+		return getNombre().equals(v.getNombre());
 	}
 
 	// Asigna al numero de vertice el valor que recibe en el parameteo
@@ -26,5 +26,9 @@ public class Vertice {
 	
 	public int getNum() {
 		return numVertice;
+	}
+
+	public String getNombre() {
+		return nombre;
 	}
 }

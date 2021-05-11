@@ -44,6 +44,6 @@ public class Main_Kruskal {
 		arbol.separarEnRegiones(3); //cantidad de regiones en las que quiero separar el grafo
 		
 		arbol.mostrarMatriz(); //grafo separado en regiones
-		System.out.println(arbol.componentesConexas()); //el metodo imprime las regiones pero retorna la catidad de regiones
+		System.out.println(arbol.componentesConexas()); //el metodo retorna un arreglo con las regiones
 	}
 }

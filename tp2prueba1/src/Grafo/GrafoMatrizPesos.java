@@ -150,10 +150,12 @@ public class GrafoMatrizPesos {
 		}
 	}
 
-	public int componentesConexas() {
+	public ArrayList<ArrayList<String>> componentesConexas() {
 
 		boolean[] visitados = new boolean[this.matAdyacencia.length];
-		int cantComponentes = 0;
+		
+		ArrayList<ArrayList<String>> ret = new ArrayList<>();
+
 
 		for (int i = 0; i < this.matAdyacencia.length; i++) {
 			ArrayList<Integer> region = new ArrayList<>();
@@ -161,11 +163,11 @@ public class GrafoMatrizPesos {
 				DFS(i, visitados, region);
 				ArrayList<String> regionNombre = new ArrayList<>();
 				for(Integer indiceProvincia: region)
-					regionNombre.add(vertices[indiceProvincia].nombre);
-				System.out.println(regionNombre);
-				cantComponentes++;
+					regionNombre.add(vertices[indiceProvincia].getNombre());
+				ret.add(regionNombre);
+			
 			}
 		}
-		return cantComponentes;
+		return ret;
 	}
 }
