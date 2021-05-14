@@ -9,6 +9,19 @@ import org.junit.Test;
 
 
 public class GrafoMatrizPesosTest {
+	
+	
+	
+	@Test(expected = NegativeArraySizeException.class)
+	public void verticeNegativoFailTest() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(-1);
+		
+	}
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void GetPesosFailTest() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(5);
+		grafo.getPeso(-1, 0);
+	}
 
 	@Test
 	public void testNuevoVertice() {
@@ -17,6 +30,15 @@ public class GrafoMatrizPesosTest {
 		grafo.nuevoVertice("Chile");
 		assertEquals(2, grafo.numeroDeVertices());
 	}
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void nuevoVerticeExsedidoTest() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(3);
+		grafo.nuevoVertice("Argentina");
+		grafo.nuevoVertice("Chile");
+		grafo.nuevoVertice("Perú");
+		grafo.nuevoVertice("colombia");
+	}
 	@Test
 	public void testPesoArco() {
 		GrafoMatrizPesos grafo = new GrafoMatrizPesos(5);
@@ -24,6 +46,22 @@ public class GrafoMatrizPesosTest {
 		grafo.nuevoVertice("Chile");
 		grafo.nuevoArco("Argentina", "Chile", 4);
 		assertEquals(4, grafo.pesoArco("Argentina", "Chile"));
+	}
+
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void nuevoArcoInexistenteTest() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(3);
+		grafo.nuevoVertice("Argentina");
+		grafo.nuevoVertice("Chile");
+		grafo.nuevoArco("Argentina", "Perú", 1);
+	}
+	
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void nuevoArcoNegativoTest() {
+		GrafoMatrizPesos grafo = new GrafoMatrizPesos(3);
+		grafo.nuevoVertice("Argentina");
+		grafo.nuevoVertice("Chile");
+		grafo.nuevoArco("Argentina", "Perú", -1);
 	}
 	@Test
 	public void testExisteArco() {
@@ -72,11 +110,13 @@ public class GrafoMatrizPesosTest {
 		grafo.nuevoVertice("Chile");
 		grafo.nuevoVertice("Uruguay");
 		grafo.nuevoArco("Argentina", "Chile", 4);
-		grafo.separarEnRegiones(0);
-		assertTrue(grafo.existeArco("Argentina", "Chile"));
-		
-		
+		grafo.nuevoArco("Argentina", "Uruguay", 2);
+		grafo.nuevoArco("Chile", "Uruguay", 2);
+		grafo.separarEnRegiones(2);
+		grafo.separarEnRegiones(-3);
+		assertFalse(grafo.existeArco("Argentina", "Chile"));
 	}
+	
 	@Test
 	public void testComponentesConexas() {
 		GrafoMatrizPesos grafo = new GrafoMatrizPesos(4);
