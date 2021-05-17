@@ -22,7 +22,7 @@ public class AlgoritmoKruskal {
 		parent = new int[this.num_vertices + 1];
 	}
 
-	protected GrafoMatrizPesos transoformarEnArbol() {
+	public GrafoMatrizPesos transformarEnArbol() {
 		int i = 0, j = 0, ne = 1, minimo = 0, a = 0, u = 0, b = 0, v = 0, minimo_costo = 0;
 		GrafoMatrizPesos arbol = new GrafoMatrizPesos(num_vertices);
 		for (Vertice v1 : verticesHeredadas) {

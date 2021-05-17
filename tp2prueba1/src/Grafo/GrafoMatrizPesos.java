@@ -21,10 +21,10 @@ public class GrafoMatrizPesos {
 		}
 		numVerts = 0;
 	}
-	
+
 	public int getPeso(int i, int j) {
-			return matPesos[i][j];
-		}
+		return matPesos[i][j];
+	}
 
 	// Crea un nuevo vertice recibiendo su nombre de parametro (nombre provincias)
 	public void nuevoVertice(String nom) {
@@ -169,6 +169,7 @@ public class GrafoMatrizPesos {
 		}
 		return ret;
 	}
+
 	
-	
+
 }

@@ -37,13 +37,13 @@ public class Main_Kruskal {
 		grafo.mostrarMatriz(); //grafo original
 
 		AlgoritmoKruskal instancia = new AlgoritmoKruskal(grafo, grafo.vertices());
-		GrafoMatrizPesos arbol = instancia.transoformarEnArbol();
+		grafo = instancia.transformarEnArbol();
 
-		arbol.mostrarMatriz(); //grafo convertido en arbol generador minimo
+		grafo.mostrarMatriz(); //grafo convertido en arbol generador minimo
 		
-		arbol.separarEnRegiones(3); //cantidad de regiones en las que quiero separar el grafo
+		grafo.separarEnRegiones(3); //cantidad de regiones en las que quiero separar el grafo
 		
-		arbol.mostrarMatriz(); //grafo separado en regiones
-		System.out.println(arbol.componentesConexas()); //el metodo retorna un arreglo con las regiones
+		grafo.mostrarMatriz(); //grafo separado en regiones
+		System.out.println(grafo.componentesConexas()); //el metodo retorna un arreglo con las regiones
 	}
 }

@@ -23,7 +23,7 @@ public class AlgoritmoKruskalTest {
 		grafo.nuevoArco("Uruguay", "Chile", 4);
 	
 		AlgoritmoKruskal instancia = new AlgoritmoKruskal(grafo, grafo.vertices());
-		GrafoMatrizPesos arbol = instancia.transoformarEnArbol();
+		GrafoMatrizPesos arbol = instancia.transformarEnArbol();
 		
 		GrafoMatrizPesos grafo2 = new GrafoMatrizPesos(3);
 		
