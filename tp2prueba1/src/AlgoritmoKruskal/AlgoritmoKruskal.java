@@ -8,7 +8,7 @@ public class AlgoritmoKruskal {
 	static int valorMax = 0xFFFF;
 	private int[][] matriz;
 	private int num_vertices;
-	private int parent[];
+	private int padres[];
 	// vertice origen y numero de vertices
 	private Vertice[] vertices;
 	private Vertice[] verticesHeredadas;
@@ -18,7 +18,7 @@ public class AlgoritmoKruskal {
 		this.matriz = gp.getMatPeso();
 		this.vertices = verts;
 		this.verticesHeredadas = gp.vertices();
-		parent = new int[this.num_vertices + 1];
+		padres = new int[this.num_vertices + 1];
 	}
 
 	public GrafoMatrizPesos transformarEnArbol() {
@@ -52,8 +52,8 @@ public class AlgoritmoKruskal {
 	}
 
 	private int find(int i) {
-		while (parent[i] > 0) {
-			i = parent[i];
+		while (padres[i] > 0) {
+			i = padres[i];
 		}
 		return i;
 
@@ -61,7 +61,7 @@ public class AlgoritmoKruskal {
 
 	private int union(int i, int j) {
 		if (i != j) {
-			parent[j] = i;
+			padres[j] = i;
 			return 1;
 		}
 		return 0;
