@@ -90,7 +90,7 @@ public class Interfaz {
 		frame.getContentPane().add(lblFaltan);
 
 		JLabel lblIngreseCantNodos = new JLabel("Ingrese cantidad de nodos:");
-		lblIngreseCantNodos.setBounds(22, 11, 255, 14);
+		lblIngreseCantNodos.setBounds(10, 11, 255, 14);
 		frame.getContentPane().add(lblIngreseCantNodos);
 
 		textFieldCantNodos = new JTextField();
@@ -139,7 +139,7 @@ public class Interfaz {
 		textFieldNombreVertice.setColumns(10);
 
 		JLabel lblNombreVertice = new JLabel("Ingrese nombre de vertice:");
-		lblNombreVertice.setBounds(10, 36, 164, 14);
+		lblNombreVertice.setBounds(10, 36, 174, 14);
 		frame.getContentPane().add(lblNombreVertice);
 
 		JLabel lblPrimerVertice = new JLabel("Ingrese primer vertice:");
