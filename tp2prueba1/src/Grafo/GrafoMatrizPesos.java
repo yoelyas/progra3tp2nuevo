@@ -80,8 +80,8 @@ public class GrafoMatrizPesos {
 
 	// valida que exista el vertices con el nombre que recibe en el parametro y lo
 	// retorna
-	public int numVertice(String vs) {
-		Vertice v = new Vertice(vs);
+	public int numVertice(String nombre) {
+		Vertice v = new Vertice(nombre);
 		boolean encontrado = false;
 		int i = 0;
 		for (; (i < numVerts) && !encontrado;) {
