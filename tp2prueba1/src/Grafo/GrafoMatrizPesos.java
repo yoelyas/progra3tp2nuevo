@@ -96,20 +96,6 @@ public class GrafoMatrizPesos {
 		return matPesos;
 	}
 
-	// borrar mas adelante
-	public void mostrarMatriz() {
-		for (int i = 0; i < matPesos.length; i++) {
-			for (int j = 0; j < matPesos.length; j++) {
-				if (matPesos[i][j] == valorMax)
-					System.out.print(0 + " ");
-				else
-					System.out.print(matPesos[i][j] + " ");
-			}
-			System.out.println("");
-		}
-		System.out.println("");
-	}
-
 	public void quitarAristaMasGrande() {
 		int mayorPeso = 0;
 		for (int i = 0; i < matPesos.length; i++) {
@@ -169,7 +155,5 @@ public class GrafoMatrizPesos {
 		}
 		return ret;
 	}
-
-	
 
 }

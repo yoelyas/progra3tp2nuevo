@@ -23,7 +23,7 @@ public class Vertice {
 	public void asigVert(int n) {
 		numVertice = n;
 	}
-	
+
 	public int getNum() {
 		return numVertice;
 	}

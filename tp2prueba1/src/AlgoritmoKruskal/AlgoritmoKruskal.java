@@ -2,7 +2,6 @@ package AlgoritmoKruskal;
 
 import Grafo.Vertice;
 
-
 import Grafo.GrafoMatrizPesos;
 
 public class AlgoritmoKruskal {
