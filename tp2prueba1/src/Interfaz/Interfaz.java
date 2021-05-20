@@ -94,7 +94,7 @@ public class Interfaz {
 		frame.getContentPane().add(lblIngreseCantNodos);
 
 		textFieldCantNodos = new JTextField();
-		textFieldCantNodos.setBounds(196, 8, 86, 20);
+		textFieldCantNodos.setBounds(191, 8, 86, 20);
 		frame.getContentPane().add(textFieldCantNodos);
 		textFieldCantNodos.setColumns(10);
 
